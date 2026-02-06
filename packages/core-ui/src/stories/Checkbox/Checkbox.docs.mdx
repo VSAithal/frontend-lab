@@ -1,0 +1,26 @@
+import { Meta, Canvas, Story } from '@storybook/blocks'
+import * as CheckboxStories from './Checkbox.stories'
+
+<Meta of={CheckboxStories} />
+
+# Checkbox
+
+Use checkboxes for independent boolean choices. Add `label` and `description` for clarity.
+
+## Usage
+```tsx
+import { Checkbox } from '@vsaithal/core-ui'
+
+export function Example() {
+  return <Checkbox label="Accept terms" />
+}
+```
+
+## Examples
+<Canvas>
+  <Story of={CheckboxStories.WithLabel} />
+</Canvas>
+
+<Canvas>
+  <Story of={CheckboxStories.WithDescription} />
+</Canvas>

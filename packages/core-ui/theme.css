@@ -1,0 +1,32 @@
+/* src/theme.css */
+@layer base {
+  :root {
+    /* Foundational colors */
+    --background: 0 0% 100%; /* White */
+    --foreground: 222.2 84% 4.9%; /* Almost Black */
+
+    /* Primary (Blue) - Used for default buttons, links, and important actions */
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary (Slate/Gray) - Used for less important actions */
+    --secondary: 214.3 31.8% 91.4%;
+    --secondary-foreground: 222.2 84% 4.9%;
+
+    /* Destructive (Red) - Used for actions like 'delete' or 'remove' */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Other semantic colors used by primitives like cards, inputs, etc. */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    /* Other variables */
+    --radius: 0.5rem;
+    --font-family-base: 'Open Sans', sans-serif;
+  }
+}

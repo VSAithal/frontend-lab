@@ -1,0 +1,31 @@
+import { Meta, Canvas, Story } from '@storybook/blocks'
+import * as LabelStories from './Label.stories'
+
+<Meta of={LabelStories} />
+
+# Label
+
+Labels provide accessible text for form controls. Pair with inputs using `htmlFor` and `id`.
+
+## Usage
+```tsx
+import { Label, Input } from '@vsaithal/core-ui'
+
+export function Example() {
+  return (
+    <div>
+      <Label htmlFor="email">Email</Label>
+      <Input id="email" placeholder="you@example.com" />
+    </div>
+  )
+}
+```
+
+## Examples
+<Canvas>
+  <Story of={LabelStories.Default} />
+</Canvas>
+
+<Canvas>
+  <Story of={LabelStories.DisabledInput} />
+</Canvas>

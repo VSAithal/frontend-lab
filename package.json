@@ -1,0 +1,14 @@
+{
+  "name": "frontend-lab",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "storybook": "turbo run storybook"
+  },
+  "devDependencies": {
+    "turbo": "^2.4.0"
+  }
+}
