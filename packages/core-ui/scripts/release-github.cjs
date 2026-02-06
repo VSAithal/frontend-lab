@@ -8,6 +8,7 @@ function sh(cmd) {
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'))
 const version = pkg.version
 const tag = `v${version}`
+const registry = 'https://npm.pkg.github.com'
 
 console.log(`Releasing ${tag}...`)
 
@@ -16,8 +17,20 @@ sh(
   'git config user.email "41898282+github-actions[bot]@users.noreply.github.com"',
 )
 
-sh('pnpm run build')
-sh('npm publish --registry https://npm.pkg.github.com --access public')
+// Guard against republishing an existing version
+try {
+  execSync(`npm view ${pkg.name}@${version} version --registry ${registry}`, {
+    stdio: 'ignore',
+  })
+  console.error(
+    `Version ${version} already exists for ${pkg.name}. Aborting publish.`,
+  )
+  process.exit(1)
+} catch {
+  // Not found => safe to publish
+}
+
+sh(`npm publish --registry ${registry} --access public`)
 
 // Tag (only if not already)
 try {
