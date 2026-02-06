@@ -1,7 +1,7 @@
 {
   "name": "@vsaithal/core-ui",
   "private": false,
-  "version": "0.6.2",
+  "version": "0.6.3",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

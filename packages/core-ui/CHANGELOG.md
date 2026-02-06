@@ -1,5 +1,11 @@
 # @vsaithal/core-ui
 
+## 0.6.3
+
+### Patch Changes
+
+- af61a5c: chore: publish from monorepo
+
 ## 0.6.2
 
 ### Patch Changes
