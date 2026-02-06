@@ -16,7 +16,7 @@ sh(
   'git config user.email "41898282+github-actions[bot]@users.noreply.github.com"',
 )
 
-sh('npm run build')
+sh('pnpm run build')
 sh('npm publish --registry https://npm.pkg.github.com --access public')
 
 // Tag (only if not already)
