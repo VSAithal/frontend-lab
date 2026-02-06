@@ -9,6 +9,7 @@
     "storybook": "turbo run storybook"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.8",
     "turbo": "^2.4.0"
   }
 }
