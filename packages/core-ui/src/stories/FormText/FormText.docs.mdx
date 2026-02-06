@@ -1,0 +1,40 @@
+import { Meta, Canvas, Story } from '@storybook/blocks'
+import * as FormTextStories from './FormText.stories'
+
+<Meta of={FormTextStories} />
+
+# Form Text
+
+Form text primitives provide helper and error messaging around inputs.
+
+## Usage
+```tsx
+import {
+  FormHelper,
+  FormDescription,
+  FormMessage,
+} from '@vsaithal/core-ui'
+import { Label, Input } from '@vsaithal/core-ui'
+
+export function Example() {
+  return (
+    <div>
+      <Label htmlFor="email">Email</Label>
+      <Input id="email" aria-invalid="true" />
+      <FormHelper>
+        <FormDescription>Use a valid email address.</FormDescription>
+        <FormMessage>Email is required.</FormMessage>
+      </FormHelper>
+    </div>
+  )
+}
+```
+
+## Examples
+<Canvas>
+  <Story of={FormTextStories.DescriptionOnly} />
+</Canvas>
+
+<Canvas>
+  <Story of={FormTextStories.DescriptionAndError} />
+</Canvas>

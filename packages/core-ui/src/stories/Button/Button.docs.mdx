@@ -1,0 +1,30 @@
+import { Meta, Canvas, Story } from '@storybook/blocks'
+import * as ButtonStories from './Button.stories'
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Buttons are used for primary actions in a flow. Use the `variant`, `size`, and `rounded` props to control style and shape.
+
+## Usage
+```tsx
+import { Button } from '@vsaithal/core-ui'
+
+export function Example() {
+  return (
+    <Button variant="primary" size="base">
+      Save changes
+    </Button>
+  )
+}
+```
+
+## Examples
+<Canvas>
+  <Story of={ButtonStories.Primary} />
+</Canvas>
+
+<Canvas>
+  <Story of={ButtonStories.WithIcon} />
+</Canvas>
