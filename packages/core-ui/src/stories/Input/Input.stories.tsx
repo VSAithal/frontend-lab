@@ -8,9 +8,9 @@ import {
 import { Search, Mail } from 'lucide-react'
 
 const meta: Meta<typeof Input> = {
+  tags: ['autodocs'],
   title: 'Components/Input',
   component: Input,
-  tags: ['autodocs'],
   argTypes: {
     placeholder: { control: 'text' },
     disabled: { control: 'boolean' },

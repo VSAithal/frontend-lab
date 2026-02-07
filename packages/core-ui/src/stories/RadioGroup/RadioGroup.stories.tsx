@@ -3,9 +3,9 @@ import { useState } from 'react'
 import { RadioGroup, type RadioOption } from '@components/RadioGroup'
 
 const meta: Meta<typeof RadioGroup> = {
+  tags: ['autodocs'],
   title: 'Components/RadioGroup',
   component: RadioGroup,
-  tags: ['autodocs'],
   argTypes: {
     options: { control: 'object' },
     defaultValue: { control: 'text' },

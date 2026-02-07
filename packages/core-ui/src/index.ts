@@ -15,6 +15,23 @@ export { Input } from './components/Input'
 export type { InputProps } from './components/Input'
 
 export {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from './components/Card'
+export type {
+  CardProps,
+  CardHeaderProps,
+  CardTitleProps,
+  CardDescriptionProps,
+  CardContentProps,
+  CardFooterProps,
+} from './components/Card'
+
+export {
   InputGroup,
   InputGroupInput,
   InputGroupAddon,

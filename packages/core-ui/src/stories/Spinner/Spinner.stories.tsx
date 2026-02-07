@@ -6,9 +6,9 @@ type Story = StoryObj<SpinnerType>
 type SpinnerMetaProps = Meta<SpinnerType>
 
 const meta: SpinnerMetaProps = {
+  tags: ['autodocs'],
   title: 'Components/Spinner',
   component: Spinner,
-  tags: ['autodocs'],
   argTypes: {
     size: {
       control: 'select',
