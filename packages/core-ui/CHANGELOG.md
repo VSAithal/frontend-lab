@@ -1,5 +1,11 @@
 # @vsaithal/core-ui
 
+## 0.7.0
+
+### Minor Changes
+
+- fc5d531: added Card component to core-ui
+
 ## 0.6.3
 
 ### Patch Changes
