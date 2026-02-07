@@ -3,9 +3,9 @@ import { Label } from '@components/primitives/label'
 import { Input } from '@components/Input'
 
 const meta: Meta<typeof Label> = {
+  tags: ['autodocs'],
   title: 'Primitives/Label',
   component: Label,
-  tags: ['autodocs'],
 }
 export default meta
 

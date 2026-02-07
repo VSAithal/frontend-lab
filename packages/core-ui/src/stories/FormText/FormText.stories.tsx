@@ -6,8 +6,8 @@ import { FormMessage } from '@components/primitives/Form/FormMessage'
 import { FormHelper } from '@components/primitives/Form/FormHelper'
 
 const meta: Meta = {
-  title: 'Primitives/Form Text',
   tags: ['autodocs'],
+  title: 'Primitives/Form Text',
 }
 export default meta
 
