@@ -43,5 +43,7 @@ jobs:
           # This runs ONLY after the release PR is merged into master
           publish: pnpm -C packages/core-ui release:github
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Use a dedicated token if configured so release PR events can trigger CI.
+          # Fallback keeps current behavior until the secret is added.
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PR_TOKEN || secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
