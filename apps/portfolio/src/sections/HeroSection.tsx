@@ -1,5 +1,6 @@
 import { Button, Card, CardContent } from '@vsaithal/core-ui'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
+import type { MouseEvent, ReactNode } from 'react'
 
 const listVariants = {
   hidden: { opacity: 0 },
@@ -15,6 +16,52 @@ const listVariants = {
 const itemVariants = {
   hidden: { opacity: 0, y: 8 },
   show: { opacity: 1, y: 0 },
+}
+
+type MagneticCtaProps = {
+  children: ReactNode
+  onClick: () => void
+  variant?: 'primary' | 'outline'
+}
+
+function MagneticCta({ children, onClick, variant = 'primary' }: MagneticCtaProps) {
+  const shouldReduceMotion = useReducedMotion()
+  const rawX = useMotionValue(0)
+  const rawY = useMotionValue(0)
+  const x = useSpring(rawX, { stiffness: 230, damping: 20, mass: 0.2 })
+  const y = useSpring(rawY, { stiffness: 230, damping: 20, mass: 0.2 })
+
+  const handleMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (shouldReduceMotion) return
+    const rect = event.currentTarget.getBoundingClientRect()
+    const relativeX = (event.clientX - rect.left) / rect.width - 0.5
+    const relativeY = (event.clientY - rect.top) / rect.height - 0.5
+    rawX.set(relativeX * 8)
+    rawY.set(relativeY * 8)
+  }
+
+  const handleLeave = () => {
+    rawX.set(0)
+    rawY.set(0)
+  }
+
+  return (
+    <motion.div
+      className="inline-block"
+      style={shouldReduceMotion ? undefined : { x, y }}
+      whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+    >
+      <Button variant={variant} onClick={onClick} className="group relative overflow-hidden">
+        <span className="relative z-10">{children}</span>
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -translate-x-[120%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[130%]"
+        />
+      </Button>
+    </motion.div>
+  )
 }
 
 export function HeroSection() {
@@ -41,12 +88,12 @@ export function HeroSection() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button onClick={() => scrollToId('projects')}>
+            <MagneticCta onClick={() => scrollToId('projects')}>
               View Projects
-            </Button>
-            <Button variant="outline" onClick={() => scrollToId('contact')}>
+            </MagneticCta>
+            <MagneticCta variant="outline" onClick={() => scrollToId('contact')}>
               Contact Me
-            </Button>
+            </MagneticCta>
           </div>
         </div>
 

@@ -24,9 +24,15 @@ export function AnimatedSection({
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <h2 id={`${id}-title`} className="mb-6 font-heading text-3xl font-semibold md:text-4xl">
-        {title}
-      </h2>
+      <div className="mb-6">
+        <h2 id={`${id}-title`} className="font-heading text-3xl font-semibold md:text-4xl">
+          {title}
+        </h2>
+        <span
+          aria-hidden
+          className="mt-2 block h-[5px] w-20 rounded-full bg-[hsl(var(--primary)/0.6)]"
+        />
+      </div>
       {children}
     </motion.section>
   )

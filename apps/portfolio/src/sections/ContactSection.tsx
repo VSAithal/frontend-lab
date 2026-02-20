@@ -44,7 +44,7 @@ export function ContactSection() {
           </Button>
         </li>
         <li>
-          <span className="font-medium">Xing:</span>
+          <span className="font-medium">Xing:</span>{' '}
           <Button asChild variant="link" className="h-auto p-0 align-baseline text-[hsl(var(--primary))]">
             <a className="underline-offset-4 hover:underline" href="https://www.xing.com/profile/your-profile" target="_blank" rel="noreferrer">
               xing.com/profile/your-profile
