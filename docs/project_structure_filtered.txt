@@ -1,0 +1,273 @@
+--- File: apps/portfolio/src/sections/AboutSection.tsx ---
+export function AboutSection() {
+  return (
+    <div className="section-surface rounded-3xl border border-[hsl(var(--border)/0.6)] bg-[hsl(var(--card)/0.88)] p-7 shadow-glow md:p-10">
+      <p className="max-w-3xl text-base leading-relaxed text-[hsl(var(--muted-foreground))] md:text-lg">
+        I focus on frontend systems that stay maintainable as teams and product scope
+        grow. My work blends engineering rigor with visual clarity: design-system
+        foundations, typed architecture boundaries, and accessible interfaces that
+        support high-impact business workflows.
+      </p>
+    </div>
+  )
+}
+
+
+--- File: apps/portfolio/src/sections/ContactSection.tsx ---
+import { Button, Checkbox, Input, Label } from '@vsaithal/core-ui'
+
+export function ContactSection() {
+  return (
+    <div className="grid gap-8 rounded-3xl border border-[hsl(var(--border)/0.65)] bg-[hsl(var(--card)/0.9)] p-7 shadow-glow md:grid-cols-2 md:p-10">
+      <div>
+        <h3 className="font-heading text-2xl font-semibold">Let&apos;s build something useful.</h3>
+        <p className="mt-3 max-w-lg text-[hsl(var(--muted-foreground))]">
+          I enjoy collaborating on products where craft and impact matter equally.
+          Reach out for frontend architecture, design systems, and product delivery.
+        </p>
+
+        <div className="mt-6 space-y-2 text-sm">
+          <p>
+            Email: <a className="text-[hsl(var(--primary))] underline-offset-4 hover:underline" href="mailto:YOUR_EMAIL_PLACEHOLDER">YOUR_EMAIL_PLACEHOLDER</a>
+          </p>
+          <p>
+            LinkedIn: <a className="text-[hsl(var(--primary))] underline-offset-4 hover:underline" href="https://www.linkedin.com/in/YOUR_LINKEDIN_PLACEHOLDER" target="_blank" rel="noreferrer">YOUR_LINKEDIN_PLACEHOLDER</a>
+          </p>
+        </div>
+      </div>
+
+      <form className="space-y-4" aria-label="Contact form">
+        <div className="space-y-2">
+          <Label htmlFor="name">Name</Label>
+          <Input id="name" name="name" placeholder="Your name" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" name="email" type="email" placeholder="you@company.com" />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="message">Message</Label>
+          <textarea
+            id="message"
+            name="message"
+            rows={4}
+            className="flex w-full rounded-md border border-[hsl(var(--input))] bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-[hsl(var(--muted-foreground))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[hsl(var(--ring))]"
+            placeholder="Project details, timelines, and goals"
+          />
+        </div>
+
+        <Checkbox id="consent" label="I agree to be contacted" />
+
+        <Button type="submit" className="w-full md:w-auto">
+          Send Message
+        </Button>
+      </form>
+    </div>
+  )
+}
+
+
+--- File: apps/portfolio/src/sections/ExperienceSection.tsx ---
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@vsaithal/core-ui'
+
+const highlights = [
+  'Led gridX-facing frontend streams with a focus on clarity, speed, and maintainability.',
+  'Built reusable UI patterns for energy workflows, reducing feature delivery overhead.',
+  'Collaborated across product, design, and platform teams to ship accessible experiences.',
+  'Improved consistency through component standards and shared design-language decisions.',
+]
+
+export function ExperienceSection() {
+  return (
+    <Card className="border-[hsl(var(--border)/0.75)] bg-[hsl(var(--card)/0.9)] shadow-glow">
+      <CardHeader>
+        <CardTitle>gridX • Senior Frontend Developer</CardTitle>
+        <CardDescription>Energy domain products • Munich, Germany</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <ul className="grid gap-3 md:grid-cols-2">
+          {highlights.map((highlight) => (
+            <li
+              key={highlight}
+              className="rounded-xl border border-[hsl(var(--border)/0.7)] bg-[hsl(var(--background)/0.85)] p-4 text-sm leading-relaxed text-[hsl(var(--muted-foreground))]"
+            >
+              {highlight}
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+    </Card>
+  )
+}
+
+
+--- File: apps/portfolio/src/sections/HeroSection.tsx ---
+import { Button, Card, CardContent } from '@vsaithal/core-ui'
+import { motion } from 'framer-motion'
+
+export function HeroSection() {
+  const scrollToId = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  return (
+    <section id="hero" aria-labelledby="hero-title" className="grid-pattern relative overflow-hidden rounded-3xl border border-[hsl(var(--border)/0.6)] bg-[hsl(var(--card)/0.82)] p-8 shadow-glow md:p-12">
+      <div className="absolute -right-16 -top-16 size-44 rounded-full bg-[hsl(var(--primary)/0.18)] blur-3xl" />
+      <div className="absolute -bottom-16 left-1/3 size-40 rounded-full bg-[hsl(var(--accent)/0.2)] blur-3xl" />
+
+      <div className="relative grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+        <div>
+          <p className="mb-4 inline-flex items-center rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--background)/0.8)] px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-[hsl(var(--muted-foreground))]">
+            Munich, Germany
+          </p>
+          <h1 id="hero-title" className="font-heading text-4xl font-bold tracking-tight text-[hsl(var(--foreground))] md:text-6xl">
+            Vidyasagar Aithal
+          </h1>
+          <p className="mt-4 text-xl font-semibold text-[hsl(var(--primary))]">Senior Frontend Developer</p>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[hsl(var(--muted-foreground))] md:text-lg">
+            I build scalable React and TypeScript products with durable design systems,
+            accessibility-first UX, and domain-grounded delivery across modern energy
+            platforms.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button onClick={() => scrollToId('projects')}>
+              View Projects
+            </Button>
+            <Button variant="outline" onClick={() => scrollToId('contact')}>
+              Contact Me
+            </Button>
+          </div>
+        </div>
+
+        <motion.div
+          className="animate-float"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.45 }}
+        >
+          <Card className="w-full border-[hsl(var(--border)/0.8)] bg-[hsl(var(--background)/0.75)] sm:w-80">
+            <CardContent className="space-y-4 p-6">
+              <p className="text-sm uppercase tracking-[0.15em] text-[hsl(var(--muted-foreground))]">
+                Focus Areas
+              </p>
+              <ul className="space-y-2 text-sm text-[hsl(var(--foreground))]">
+                <li>React + TypeScript Architecture</li>
+                <li>Scalable Component Libraries</li>
+                <li>Accessibility + Performance</li>
+                <li>Energy Domain Product UX</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+
+--- File: apps/portfolio/src/sections/ProjectsSection.tsx ---
+import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@vsaithal/core-ui'
+
+const projects = [
+  {
+    title: 'Core UI Library',
+    description:
+      'Reusable React component library with accessibility-first APIs, testing, and release automation.',
+    href: 'https://github.com/VSAithal/frontend-lab/tree/master/packages/core-ui',
+    cta: 'View Core UI',
+  },
+  {
+    title: 'Frontend Architecture Project',
+    description:
+      'Placeholder for a case study focused on architecture patterns, boundaries, and scalability.',
+    href: '#',
+    cta: 'Coming Soon',
+  },
+  {
+    title: 'AI Lab Experiments',
+    description:
+      'Placeholder for practical AI-assisted frontend workflows and product experimentation.',
+    href: '#',
+    cta: 'Coming Soon',
+  },
+]
+
+export function ProjectsSection() {
+  const handleProjectAction = (href: string) => {
+    if (href.startsWith('http')) {
+      window.open(href, '_blank', 'noopener,noreferrer')
+    }
+  }
+
+  return (
+    <div className="grid gap-5 md:grid-cols-3">
+      {projects.map((project) => (
+        <Card
+          key={project.title}
+          className="group border-[hsl(var(--border)/0.75)] bg-[hsl(var(--card)/0.9)] transition duration-300 hover:-translate-y-1 hover:border-[hsl(var(--primary)/0.5)]"
+        >
+          <CardHeader>
+            <CardTitle>{project.title}</CardTitle>
+            <CardDescription>{project.description}</CardDescription>
+          </CardHeader>
+          <CardContent />
+          <CardFooter>
+            <Button
+              variant="outline"
+              className="w-full group-hover:border-[hsl(var(--primary)/0.5)]"
+              onClick={() => handleProjectAction(project.href)}
+              disabled={project.href === '#'}
+            >
+              {project.cta}
+            </Button>
+          </CardFooter>
+        </Card>
+      ))}
+    </div>
+  )
+}
+
+
+--- File: apps/portfolio/src/sections/SkillsSection.tsx ---
+const skillGroups = [
+  {
+    title: 'Frontend Engineering',
+    skills: ['React', 'TypeScript', 'Vite', 'Next.js', 'State Management'],
+  },
+  {
+    title: 'UI Architecture',
+    skills: ['Design Systems', 'Component APIs', 'Storybook', 'Tailwind CSS', 'Tokens'],
+  },
+  {
+    title: 'Quality & Delivery',
+    skills: ['Accessibility', 'Testing', 'CI/CD', 'Performance', 'Monorepo Tooling'],
+  },
+]
+
+export function SkillsSection() {
+  return (
+    <div className="grid gap-4 md:grid-cols-3">
+      {skillGroups.map((group) => (
+        <article
+          key={group.title}
+          className="rounded-2xl border border-[hsl(var(--border)/0.65)] bg-[hsl(var(--card)/0.88)] p-6"
+        >
+          <h3 className="font-heading text-lg font-semibold">{group.title}</h3>
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {group.skills.map((skill) => (
+              <li
+                key={skill}
+                className="rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--background)/0.9)] px-3 py-1 text-sm text-[hsl(var(--muted-foreground))]"
+              >
+                {skill}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  )
+}
+

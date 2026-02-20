@@ -47,17 +47,34 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, rounded, asChild = false, type, ...props },
+    { className, variant, size, rounded, asChild = false, type, children, ...props },
     ref,
   ) => {
+    if (asChild) {
+      const validChildrenCount = React.Children.toArray(children).filter((child) =>
+        React.isValidElement(child),
+      ).length
+
+      if (validChildrenCount !== 1) {
+        return null
+      }
+    }
+
     const Comp = asChild ? Slot : 'button'
+    const childElements = React.Children.toArray(children).filter((child) =>
+      React.isValidElement(child),
+    )
+    const normalizedChildren = asChild ? childElements[0] : children
+
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, rounded, className }))}
         ref={ref}
         {...(!asChild ? { type: type ?? 'button' } : {})}
         {...props}
-      />
+      >
+        {normalizedChildren}
+      </Comp>
     )
   },
 )
