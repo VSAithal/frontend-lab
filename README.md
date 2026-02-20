@@ -42,7 +42,13 @@ SPA portfolio lives at `apps/portfolio`.
 Run locally:
 ```bash
 pnpm install
-pnpm dev --filter portfolio
+pnpm --filter portfolio dev
+```
+
+Alternative:
+```bash
+cd apps/portfolio
+pnpm dev
 ```
 
 Build:
