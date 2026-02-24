@@ -8,7 +8,7 @@ const projects = [
     href: 'https://github.com/VSAithal/frontend-lab/tree/master/packages/core-ui',
     cta: 'View Core UI',
   },
-  {
+  /* {
     title: 'Frontend Architecture Case Study (WIP)',
     description:
       'A partner portal-style app demonstrating typed boundaries, React Query data layer, feature flags, error boundaries, and E2E tests.',
@@ -21,7 +21,7 @@ const projects = [
       'Practical experiments using Codex as pair programmer: refactoring workflows, UI generation prompts, and testing automation.',
     href: '#',
     cta: 'In progress',
-  },
+  }, */
 ]
 
 export function ProjectsSection() {

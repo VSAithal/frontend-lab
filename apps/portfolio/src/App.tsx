@@ -16,7 +16,7 @@ const NAV_ITEMS = [
   { id: 'hero', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
-  { id: 'experience', label: 'Experience' },
+  { id: 'experience', label: 'Professional Experience' },
   { id: 'projects', label: 'Projects' },
   { id: 'contact', label: 'Contact' },
 ]
@@ -59,7 +59,7 @@ export default function App() {
             <SkillsSection />
           </AnimatedSection>
 
-          <AnimatedSection id="experience" title="Experience">
+          <AnimatedSection id="experience" title="Professional Experience">
             <ExperienceSection />
           </AnimatedSection>
 

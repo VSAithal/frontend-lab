@@ -84,7 +84,9 @@ export function HeroSection() {
           </h1>
           <p className="mt-4 text-xl font-semibold text-[hsl(var(--primary))]">Senior Frontend Developer</p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-[hsl(var(--muted-foreground))] md:text-lg">
-            I build scalable B2B web applications with React + TypeScript, focused on design systems, accessibility, and performance. Based in Munich, I’ve spent the last years shipping energy-domain products (HEM & EV charging) with strong testing and delivery practices.
+            Senior Frontend Developer with 8+ years of experience building scalable, user-centric web applications using React and TypeScript.
+            I specialize in design systems, frontend architecture, accessibility, and performance — delivering reliable products across domains, including energy and enterprise platforms.
+            Based in Munich, Germany.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
