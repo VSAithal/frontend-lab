@@ -46,11 +46,15 @@ export function ProjectsSection() {
           <CardFooter>
             <Button
               variant="outline"
-              className="w-full group-hover:border-[hsl(var(--primary)/0.5)]"
+              className="group relative w-full overflow-hidden group-hover:border-[hsl(var(--primary)/0.5)]"
               onClick={() => handleProjectAction(project.href)}
               disabled={project.href === '#'}
             >
-              {project.cta}
+              <span className="relative z-10">{project.cta}</span>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -translate-x-[120%] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-[130%]"
+              />
             </Button>
           </CardFooter>
         </Card>

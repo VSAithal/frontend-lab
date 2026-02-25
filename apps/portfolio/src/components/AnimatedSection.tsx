@@ -14,11 +14,13 @@ export function AnimatedSection({
   children,
   className,
 }: AnimatedSectionProps) {
+  const sectionClassName = `scroll-mt-20 md:scroll-mt-20 ${className ?? ''}`.trim()
+
   return (
     <motion.section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={className}
+      className={sectionClassName}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
