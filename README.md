@@ -33,4 +33,26 @@ pnpm storybook
 pnpm -C packages/core-ui build
 pnpm -C packages/core-ui test
 pnpm -C packages/core-ui storybook
+pnpm dev --filter portfolio
+```
+
+## Portfolio App
+SPA portfolio lives at `apps/portfolio`.
+
+Run locally:
+```bash
+pnpm install
+pnpm --filter portfolio dev
+```
+
+Alternative:
+```bash
+cd apps/portfolio
+pnpm dev
+```
+
+Build:
+```bash
+pnpm --filter portfolio build
+pnpm build
 ```

@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import '@vsaithal/core-ui/core-ui.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --background: 205 33% 98%;
+  --foreground: 223 30% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 223 30% 11%;
+  --border: 215 24% 88%;
+  --input: 215 24% 88%;
+  --ring: 196 95% 42%;
+  --primary: 197 92% 45%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 212 35% 94%;
+  --secondary-foreground: 225 25% 17%;
+  --muted: 212 35% 94%;
+  --muted-foreground: 217 16% 43%;
+  --accent: 165 72% 90%;
+  --accent-foreground: 170 84% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 223 30% 11%;
+  --destructive: 0 84% 56%;
+  --destructive-foreground: 0 0% 100%;
+  --radius: 0.9rem;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: 223 47% 7%;
+  --foreground: 210 33% 96%;
+  --card: 224 42% 10%;
+  --card-foreground: 210 33% 96%;
+  --border: 220 24% 24%;
+  --input: 220 24% 24%;
+  --ring: 190 100% 58%;
+  --primary: 191 100% 63%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 223 30% 16%;
+  --secondary-foreground: 210 33% 96%;
+  --muted: 223 30% 16%;
+  --muted-foreground: 216 19% 70%;
+  --accent: 171 65% 17%;
+  --accent-foreground: 163 92% 77%;
+  --popover: 223 47% 8%;
+  --popover-foreground: 210 33% 96%;
+  --destructive: 0 75% 55%;
+  --destructive-foreground: 210 33% 96%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-body antialiased;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+::selection {
+  background: hsl(var(--primary) / 0.24);
+}
+
+.section-surface {
+  position: relative;
+}
+
+.section-surface::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(145deg, hsl(var(--primary) / 0.16), transparent 35%),
+    linear-gradient(320deg, hsl(var(--accent) / 0.2), transparent 45%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(to right, hsl(var(--border) / 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--border) / 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
