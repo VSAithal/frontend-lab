@@ -22,10 +22,10 @@ try {
   execSync(`npm view ${pkg.name}@${version} version --registry ${registry}`, {
     stdio: 'ignore',
   })
-  console.error(
-    `Version ${version} already exists for ${pkg.name}. Aborting publish.`,
+  console.log(
+    `Version ${version} already exists for ${pkg.name}. Skipping publish.`,
   )
-  process.exit(1)
+  process.exit(0)
 } catch {
   // Not found => safe to publish
 }
