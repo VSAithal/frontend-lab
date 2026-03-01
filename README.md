@@ -8,12 +8,12 @@ A frontend monorepo containing:
 Built with pnpm workspaces + Turborepo.
 
 ## Live Demos
-- Portfolio: `https://vsaithal-portfolio.netlify.app`
-- Core UI Storybook: `https://vsaithal-design-system.netlify.app`
+- Portfolio: [vsaithal-portfolio](https://vsaithal-portfolio.netlify.app)
+- Core UI Storybook: [vsaithal-design-system](https://vsaithal-design-system.netlify.app)
 
 ## Core UI Links
-- Core UI package folder: `packages/core-ui`
-- Core UI detailed documentation: `packages/core-ui/README.md`
+- Core UI package folder: [packages/core-ui](https://github.com/VSAithal/frontend-lab/tree/master/packages/core-ui)
+- Core UI detailed documentation: [packages/core-ui/README.md](https://github.com/VSAithal/frontend-lab/blob/master/packages/core-ui/README.md)
 
 ## Monorepo Structure
 ```txt
@@ -24,10 +24,10 @@ packages/
 ```
 
 ## What This Showcases
-- Design system architecture (reusable, variant-driven components)
-- Accessibility-minded UI primitives
-- Monorepo workflow (shared code + isolated app/package development)
-- Frontend engineering with React, TypeScript, Tailwind, Storybook, and Vitest
+- Reusable, variant-driven design system architecture
+- Accessibility-first UI primitives and patterns
+- Monorepo workflow with shared packages and isolated app development
+- Modern frontend engineering with React, TypeScript, Tailwind, Storybook, and Vitest
 
 ## Tech Stack
 - React
