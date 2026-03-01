@@ -35,7 +35,7 @@ Follow these instructions to get the project up and running on your local machin
 
 2.  **Install dependencies:**
     ```bash
-    npm install
+    pnpm install
     ```
 
 ## 📦 How to Consume (GitHub Packages)
@@ -53,7 +53,7 @@ This package is published to **GitHub Packages** (not npmjs). To install it in y
 3.  **Install the package:**
 
     ```bash
-    npm install @vsaithal/core-ui
+    pnpm install @vsaithal/core-ui
     ```
 
 4.  **Import styles (once in your app):**
@@ -70,26 +70,26 @@ This project comes with a set of useful scripts defined in `package.json`.
   This is the primary command for component development. It starts the Storybook server and opens it in your browser.
 
   ```bash
-  npm run storybook
+  pnpm run storybook
   ```
 
 - **Run Unit Tests:**
   This command executes all unit tests (`.spec.tsx` files) using Vitest in a simulated DOM environment.
 
   ```bash
-  npm run test
+  pnpm run test
   ```
 
 - **Run Unit Tests in Watch Mode:**
   To run tests automatically whenever you save a file, use:
 
   ```bash
-  npm run test -- --watch
+  pnpm run test -- --watch
   ```
 
 - **Linting and Formatting:**
   To check for code style issues and format the entire codebase:
   ```bash
-  npm run lint
-  npm run format
+  pnpm run lint
+  pnpm run format
   ```
