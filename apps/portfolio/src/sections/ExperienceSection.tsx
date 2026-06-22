@@ -1,17 +1,20 @@
 import { Card, CardContent } from '@vsaithal/core-ui'
 
 const currentRoleHighlights = [
-  'Developed and maintained core features of a B2B energy management platform used by enterprise partners.',
-  'Designed scalable UI architecture using React, TypeScript, and React Query.',
-  'Contributed to an internal design system to ensure consistency and accessibility.',
-  'Strengthened product reliability through E2E testing (Playwright) and CI/CD workflows.',
+  'Led data layer migration from Redux to React Query across a production B2B EMS platform, reducing async boilerplate by ~40% and improving new developer ramp-up time.',
+  'Drove Webpack to Vite migration as a phased, risk-managed rollout, cutting dev startup from 45s to 8s (6×) and reducing production build time by 70%.',
+  'Designed and owned a custom design system (Radix UI, shadcn/ui) with TypeScript prop contracts and Storybook documentation, eliminating cross-team component regressions.',
+  'Introduced Playwright E2E coverage for critical user flows, significantly reducing regression bugs and increasing release confidence across long-lived production features.',
+  'Implemented feature flagging and analytics (PostHog), enabling safe incremental rollouts and data-driven product decisions.',
+  'Contributed to CI/CD pipelines (Buildkite) and frontend architecture decisions across a multi-team, enterprise platform.',
 ]
 
 const previousRolesHighlights = [
-  'Delivered enterprise-scale React applications.',
-  'Optimized performance and UI consistency across products.',
+  'Built and maintained large-scale enterprise web applications using React, Redux-Saga, and Ant Design, serving high-traffic internal and external users.',
+  'Delivered responsive, cross-browser UI implementations aligned with enterprise design standards across fast-paced delivery cycles.',
+  'Improved frontend performance and long-term maintainability through modular architecture and reusable component patterns.',
+  'Collaborated closely with QA, backend engineers, and business stakeholders in a cross-functional agile environment.',
 ]
-
 
 export function ExperienceSection() {
   return (
@@ -32,7 +35,7 @@ export function ExperienceSection() {
               gridX GmbH
             </h3>
             <p className="mt-1 text-base font-medium text-[hsl(var(--primary))]">
-              Software Engineer, Frontend Developement
+              Senior Frontend Engineer
             </p>
           </div>
 
@@ -51,7 +54,6 @@ export function ExperienceSection() {
 
       <Card className="border-[hsl(var(--border)/0.75)] bg-[hsl(var(--card)/0.9)]">
         <CardContent className="space-y-6 p-6 md:p-7">
-
           <div className="flex flex-wrap items-center gap-3">
             <span className="rounded-full border border-[hsl(var(--primary)/0.45)] bg-[hsl(var(--primary)/0.1)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[hsl(var(--primary))]">
               Previous Experience
@@ -80,10 +82,6 @@ export function ExperienceSection() {
               </li>
             ))}
           </ul>
-
-
-
-
         </CardContent>
       </Card>
     </div>
