@@ -53,7 +53,11 @@ function MagneticCta({ children, onClick, variant = 'primary' }: MagneticCtaProp
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
     >
-      <Button variant={variant} onClick={onClick} className="group relative overflow-hidden">
+      <Button
+        variant={variant}
+        onClick={onClick}
+        className="group relative overflow-hidden"
+      >
         <span className="relative z-10">{children}</span>
         <span
           aria-hidden
@@ -70,7 +74,11 @@ export function HeroSection() {
   }
 
   return (
-    <section id="hero" aria-labelledby="hero-title" className="grid-pattern relative overflow-hidden rounded-3xl border border-[hsl(var(--border)/0.6)] bg-[hsl(var(--card)/0.82)] p-8 shadow-glow md:p-12">
+    <section
+      id="hero"
+      aria-labelledby="hero-title"
+      className="grid-pattern relative overflow-hidden rounded-3xl border border-[hsl(var(--border)/0.6)] bg-[hsl(var(--card)/0.82)] p-8 shadow-glow md:p-12"
+    >
       <div className="absolute -right-16 -top-16 size-44 rounded-full bg-[hsl(var(--primary)/0.18)] blur-3xl" />
       <div className="absolute -bottom-16 left-1/3 size-40 rounded-full bg-[hsl(var(--accent)/0.2)] blur-3xl" />
 
@@ -79,14 +87,19 @@ export function HeroSection() {
           <p className="mb-4 inline-flex items-center rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--background)/0.8)] px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-[hsl(var(--muted-foreground))]">
             Munich, Germany
           </p>
-          <h1 id="hero-title" className="font-heading text-4xl font-bold tracking-tight text-[hsl(var(--foreground))] md:text-6xl">
+          <h1
+            id="hero-title"
+            className="font-heading text-4xl font-bold tracking-tight text-[hsl(var(--foreground))] md:text-6xl"
+          >
             Vidyasagar Aithal
           </h1>
-          <p className="mt-4 text-xl font-semibold text-[hsl(var(--primary))]">Senior Frontend Developer</p>
+          <p className="mt-4 text-xl font-semibold text-[hsl(var(--primary))]">
+            Senior Frontend Developer
+          </p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-[hsl(var(--muted-foreground))] md:text-lg">
-            Senior Frontend Developer with 8+ years of experience building scalable, user-centric web applications using React and TypeScript.
-            I specialize in design systems, frontend architecture, accessibility, and performance — delivering reliable products across domains, including energy and enterprise platforms.
-            Based in Munich, Germany.
+            Senior Frontend Developer specialising in design systems, scalable
+            architecture, and developer experience. Building reliable, maintainable
+            products with React and TypeScript for 8+ years. Based in Munich, Germany.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -117,12 +130,24 @@ export function HeroSection() {
                 whileInView="show"
                 viewport={{ once: true, amount: 0.6 }}
               >
-                <motion.li variants={itemVariants}>Scalable React + TypeScript architecture</motion.li>
-                <motion.li variants={itemVariants}>Design systems & reusable component APIs (Storybook)</motion.li>
-                <motion.li variants={itemVariants}>Server & client state management (React Query, Redux Toolkit)</motion.li>
-                <motion.li variants={itemVariants}>Testing strategy (Unit, Integration, E2E - Playwright)</motion.li>
-                <motion.li variants={itemVariants}>Accessibility & performance optimization</motion.li>
-                <motion.li variants={itemVariants}>CI/CD & feature-driven releases (Buildkite, flags, analytics)</motion.li>
+                <motion.li variants={itemVariants}>
+                  Scalable React + TypeScript architecture
+                </motion.li>
+                <motion.li variants={itemVariants}>
+                  Design systems & reusable component APIs (Storybook)
+                </motion.li>
+                <motion.li variants={itemVariants}>
+                  Server & client state management (React Query, Redux Toolkit)
+                </motion.li>
+                <motion.li variants={itemVariants}>
+                  Testing strategy (Unit, Integration, E2E - Playwright)
+                </motion.li>
+                <motion.li variants={itemVariants}>
+                  Accessibility & performance optimization
+                </motion.li>
+                <motion.li variants={itemVariants}>
+                  CI/CD & feature-driven releases (Buildkite, flags, analytics)
+                </motion.li>
               </motion.ul>
             </CardContent>
           </Card>
