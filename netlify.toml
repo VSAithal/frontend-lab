@@ -1,0 +1,16 @@
+# netlify.toml
+# Build configuration for the frontend-lab monorepo.
+# Each app in apps/ has its own Netlify site.
+
+# ── Portfolio app ──────────────────────────────────────────────────
+[build]
+  command = "pnpm --filter portfolio... build"
+  publish = "apps/portfolio/dist"
+
+  # Only rebuild portfolio when portfolio app or shared packages change.
+  # Changes to apps/devinsight will not trigger a portfolio rebuild.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- apps/portfolio/ packages/"
+
+[build.environment]
+  NODE_VERSION = "20"
+  PNPM_VERSION = "9"
