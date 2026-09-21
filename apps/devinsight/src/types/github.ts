@@ -1,4 +1,4 @@
-import z from "zod";
+import z from "zod"
 
 export const GitHubUserSchema = z.object({
   name: z.string(),
@@ -12,9 +12,9 @@ export const GitHubUserSchema = z.object({
   html_url: z.url(),
   followers: z.number(),
   following: z.number(),
-});
+})
 
-export type GitHubUser = z.infer<typeof GitHubUserSchema>;
+export type GitHubUser = z.infer<typeof GitHubUserSchema>
 
 export const GitHubRepoSchema = z.object({
   name: z.string(),
@@ -25,6 +25,6 @@ export const GitHubRepoSchema = z.object({
   updated_at: z.string().nullable(),
   visibility: z.enum(["public", "private", "internal"]),
   html_url: z.url(),
-});
+})
 
-export type GitHubRepo = z.infer<typeof GitHubRepoSchema>;
+export type GitHubRepo = z.infer<typeof GitHubRepoSchema>
