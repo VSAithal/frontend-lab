@@ -1,7 +1,7 @@
-import z from "zod"
+import z from 'zod'
 
 export const GitHubUserSchema = z.object({
-  name: z.string(),
+  name: z.string().nullable(),
   avatar_url: z.url(),
   bio: z.string().nullable(),
   login: z.string(),
@@ -23,7 +23,7 @@ export const GitHubRepoSchema = z.object({
   stargazers_count: z.number(),
   forks_count: z.number(),
   updated_at: z.string().nullable(),
-  visibility: z.enum(["public", "private", "internal"]),
+  visibility: z.enum(['public', 'private', 'internal']),
   html_url: z.url(),
 })
 
