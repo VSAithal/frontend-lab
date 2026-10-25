@@ -312,7 +312,24 @@ As a first step, we ship it without the key. GitHub allows 60 requests/hour per 
 address for unauthenticated users. Each visitor has their own independent
 quota — one user's usage does not affect another's.
 
+### Error handling and retry strategy
+
+Errors are categorised at the fetch layer into four types: network
+errors, authentication errors (401), rate limit errors (403), and
+not found errors (404). Each throws a distinct message.
+
+The ErrorMessage component accepts an optional onRetry prop.
+Retryability is determined by string matching on the error message
+in the component. This is a known limitation — a future improvement
+would use custom error classes (NotFoundError, RateLimitError) so
+retryability can be checked by type rather than string content.
+
+ErrorMessage styling is intentionally unstyled at this stage.
+Full styling will be applied alongside the Skeleton
+component and overall UI design pass.
+
 ---
+
 
 ## 11. Folder Structure
 

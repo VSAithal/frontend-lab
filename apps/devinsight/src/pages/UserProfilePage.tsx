@@ -1,6 +1,7 @@
 import { useParams } from 'react-router'
 import { useGitHubUser } from '../features/profile/useGitHubUser'
 import { Spinner } from '@vsaithal/core-ui'
+import { ErrorMessage } from '../components/ErrorMessage'
 
 export const UserProfilePage = () => {
   const { userName } = useParams()
@@ -10,7 +11,17 @@ export const UserProfilePage = () => {
     isGitHubUserLoading,
     gitHubUserFetchError,
     isGitHubUserError,
+    refetchGitHubUser,
   } = useGitHubUser(userName || null)
+
+  const isRetryable = (message: string) => {
+    const lower = message.toLowerCase()
+    return (
+      !lower.includes('not found') &&
+      !lower.includes('rate limit') &&
+      !lower.includes('authentication failed')
+    )
+  }
 
   if (isGitHubUserLoading) {
     return (
@@ -22,13 +33,18 @@ export const UserProfilePage = () => {
 
   if (isGitHubUserError && gitHubUserFetchError) {
     return (
-      <div className="flex justify-center py-4">
-        <p>Error fetching user data: {gitHubUserFetchError.message}</p>
-      </div>
+      <ErrorMessage
+        message={gitHubUserFetchError.message}
+        onRetry={
+          isRetryable(gitHubUserFetchError.message)
+            ? refetchGitHubUser
+            : undefined
+        }
+      />
     )
   }
 
-  if (!gitHubUserAccount || Object.keys(gitHubUserAccount).length === 0)
+  if (!gitHubUserAccount)
     return (
       <p className="text-sm text-muted-foreground py-4 text-center">
         No user data available. Please check the username and try again.

@@ -8,6 +8,7 @@ export const useGitHubUser = (userName: string | null) => {
     error: gitHubUserFetchError,
     isFetching: isGitHubUserFetching,
     isError: isGitHubUserError,
+    refetch: refetchGitHubUser,
   } = useQuery({
     queryKey: ['User', userName],
     queryFn: () => fetchGitHubUser(userName!),
@@ -20,5 +21,6 @@ export const useGitHubUser = (userName: string | null) => {
     gitHubUserFetchError,
     isGitHubUserError,
     isGitHubUserFetching,
+    refetchGitHubUser,
   }
 }

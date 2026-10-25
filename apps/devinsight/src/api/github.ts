@@ -1,4 +1,9 @@
-import type { GitHubRepo, GitHubUser } from '../types/github'
+import {
+  GitHubRepoSchema,
+  GitHubUserSchema,
+  type GitHubRepo,
+  type GitHubUser,
+} from '../types/github'
 import {
   BASE_URL,
   BASIC_ERROR_MESSAGE,
@@ -20,28 +25,37 @@ export const fetchGitHubUser = async (
     }
     throw new Error(NETWORK_ERROR_MESSAGE, { cause: error })
   }
-  if (!response.ok) {
-    let errorMessage = BASIC_ERROR_MESSAGE
 
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error('Authentication failed. Please check your token.')
+    }
+    if (response.status === 403) {
+      throw new Error(getRateLimitMessage(response.headers))
+    }
+    if (response.status === 404) {
+      throw new Error('User not found. Please check the username and try again')
+    }
+
+    let errorMessage = BASIC_ERROR_MESSAGE
     try {
       const errorData = await response.json()
-      if (errorData && errorData.message) {
+      if (errorData?.message) {
         errorMessage = errorData.message
       }
-    } catch (error) {
-      if (response.status === 403) {
-        const rateLimitErrorMessage = getRateLimitMessage(response.headers)
-        throw new Error(rateLimitErrorMessage)
-      } else if (response.status === 404) {
-        throw new Error('User not found')
-      } else {
-        throw new Error(errorMessage)
-      }
+    } catch {
+      // JSON parsing failed — use the default error message
     }
     throw new Error(errorMessage)
   }
-  const data: GitHubUser = await response.json()
-  return data
+
+  const raw = await response.json()
+  const result = GitHubUserSchema.safeParse(raw)
+  if (!result.success) {
+    throw new Error(`Unexpected API response: ${result.error.message}`)
+  }
+
+  return result.data
 }
 
 export const fetchGitHubUserRepos = async (
@@ -65,26 +79,35 @@ export const fetchGitHubUserRepos = async (
     throw new Error(NETWORK_ERROR_MESSAGE, { cause: error })
   }
   if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error('Authentication failed. Please check your token.')
+    }
+    if (response.status === 403) {
+      throw new Error(getRateLimitMessage(response.headers))
+    }
+    if (response.status === 404) {
+      throw new Error(
+        'User not found. Please check the username and try again.',
+      )
+    }
+
     let errorMessage = BASIC_ERROR_MESSAGE
     try {
       const errorData = await response.json()
-      if (errorData && errorData.message) {
+      if (errorData?.message) {
         errorMessage = errorData.message
       }
-    } catch (error) {
-      if (response.status === 403) {
-        const rateLimitErrorMessage = getRateLimitMessage(response.headers)
-        throw new Error(rateLimitErrorMessage)
-      } else if (response.status === 404) {
-        throw new Error(
-          'User not found. Please check the username and try again.',
-        )
-      } else {
-        throw new Error(errorMessage)
-      }
+    } catch {
+      // JSON parsing failed — use the default error message
     }
     throw new Error(errorMessage)
   }
-  const data: GitHubRepo[] = await response.json()
-  return data
+
+  const raw = await response.json()
+  const result = GitHubRepoSchema.array().safeParse(raw)
+
+  if (!result.success) {
+    throw new Error(`Unexpected API response: ${result.error.message}`)
+  }
+  return result.data
 }
