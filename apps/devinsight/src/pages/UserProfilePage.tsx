@@ -1,4 +1,4 @@
-import { useParams } from 'react-router'
+import { Link, useParams } from 'react-router'
 import { useGitHubUser } from '../features/profile/useGitHubUser'
 import { Spinner } from '@vsaithal/core-ui'
 import { ErrorMessage } from '../components/ErrorMessage'
@@ -13,15 +13,6 @@ export const UserProfilePage = () => {
     isGitHubUserError,
     refetchGitHubUser,
   } = useGitHubUser(userName || null)
-
-  const isRetryable = (message: string) => {
-    const lower = message.toLowerCase()
-    return (
-      !lower.includes('not found') &&
-      !lower.includes('rate limit') &&
-      !lower.includes('authentication failed')
-    )
-  }
 
   if (isGitHubUserLoading) {
     return (
@@ -53,8 +44,58 @@ export const UserProfilePage = () => {
 
   return (
     <div>
-      <h1>User Profile Page</h1>
-      <p>Welcome, {gitHubUserAccount?.name || gitHubUserAccount?.login}!</p>
+      {/* Display user profile information */}
+      <h1>{gitHubUserAccount.name ?? gitHubUserAccount.login}'s Profile</h1>
+
+      {/* Avatar */}
+      <img
+        src={gitHubUserAccount.avatar_url}
+        alt={`Avatar for ${gitHubUserAccount.login}`}
+        width="100"
+        height="100"
+      />
+
+      <p>@{gitHubUserAccount.login}</p>
+
+      {/* Bio */}
+      {gitHubUserAccount.bio && <p>Bio: {gitHubUserAccount.bio}</p>}
+
+      {/* Location */}
+      {gitHubUserAccount.location && (
+        <p>Location: {gitHubUserAccount.location}</p>
+      )}
+
+      {/* Company */}
+      {gitHubUserAccount.company && <p>Company: {gitHubUserAccount.company}</p>}
+
+      {/* External GitHub Profile Link */}
+
+      <a
+        href={gitHubUserAccount.html_url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        github.com/{gitHubUserAccount.login}
+      </a>
+
+      {/* stars */}
+      <div>
+        <p> {gitHubUserAccount.public_repos} public repositories</p>
+        <p> {gitHubUserAccount.followers} followers</p>
+        <p> {gitHubUserAccount.following} following</p>
+      </div>
+
+      {/* Back navigation */}
+      <Link to="/">← Back to search</Link>
     </div>
+  )
+}
+
+const isRetryable = (message: string) => {
+  const lower = message.toLowerCase()
+  return (
+    !lower.includes('not found') &&
+    !lower.includes('rate limit') &&
+    !lower.includes('authentication failed')
   )
 }
