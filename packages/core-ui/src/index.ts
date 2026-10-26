@@ -53,3 +53,6 @@ export type { FormMessageProps } from './components/primitives/Form/FormMessage'
 
 export { FormHelper } from './components/primitives/Form/FormHelper'
 export type { FormHelperProps } from './components/primitives/Form/FormHelper'
+
+export { Skeleton } from './components/Skeleton'
+export type { SkeletonProps } from './components/Skeleton'
