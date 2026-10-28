@@ -1,3 +1,10 @@
+import {
+  Button,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from '@vsaithal/core-ui'
+import { Search } from 'lucide-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 
@@ -15,14 +22,23 @@ export const HomePage = () => {
   return (
     <div>
       <h1>Home Page</h1>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-        placeholder="Enter GitHub username"
-      />
-      <button onClick={handleSearch}>Search</button>
+      <div className="ds-flex ds-gap-2 ds-items-center">
+        <InputGroup>
+          <InputGroupAddon position="left">
+            <Search />
+          </InputGroupAddon>
+          <InputGroupInput
+            aria-label="Search"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+            placeholder="Enter GitHub username"
+          />
+        </InputGroup>
+        <Button onClick={handleSearch} variant="primary" size="base">
+          Search
+        </Button>
+      </div>
     </div>
   )
 }

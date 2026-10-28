@@ -1,7 +1,8 @@
 import { Link, useParams } from 'react-router'
 import { useGitHubUser } from '../features/profile/useGitHubUser'
-import { Spinner } from '@vsaithal/core-ui'
+import { Button, Skeleton } from '@vsaithal/core-ui'
 import { ErrorMessage } from '../components/ErrorMessage'
+import { MoveLeft } from 'lucide-react'
 
 export const UserProfilePage = () => {
   const { userName } = useParams()
@@ -16,8 +17,20 @@ export const UserProfilePage = () => {
 
   if (isGitHubUserLoading) {
     return (
-      <div className="flex justify-center py-4">
-        <Spinner />
+      <div className="flex flex-col gap-2 items-center py-4">
+        <Skeleton className="h-5 w-48" />
+        <Skeleton className="w-24 h-24 rounded-full" />
+        <Skeleton className="h-4 w-32 mt-2" />
+        <Skeleton className="h-4 w-64 mt-4" />
+        <Skeleton className="h-4 w-40 mt-2" />
+        <Skeleton className="h-4 w-36 mt-2" />
+        <Skeleton className="h-4 w-44 mt-4" />
+        <div className="flex gap-4 mt-4">
+          <Skeleton className="h-4 w-28" />
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-4 w-20" />
+        </div>
+        <Skeleton className="w-40 h-9" />
       </div>
     )
   }
@@ -43,7 +56,7 @@ export const UserProfilePage = () => {
     )
 
   return (
-    <div>
+    <div className="flex flex-col gap-2 items-center py-4">
       {/* Display user profile information */}
       <h1>{gitHubUserAccount.name ?? gitHubUserAccount.login}'s Profile</h1>
 
@@ -51,8 +64,7 @@ export const UserProfilePage = () => {
       <img
         src={gitHubUserAccount.avatar_url}
         alt={`Avatar for ${gitHubUserAccount.login}`}
-        width="100"
-        height="100"
+        className="h-24 w-24 rounded-full"
       />
 
       <p>@{gitHubUserAccount.login}</p>
@@ -79,14 +91,19 @@ export const UserProfilePage = () => {
       </a>
 
       {/* stars */}
-      <div>
+      <div className="flex gap-4 mt-4">
         <p> {gitHubUserAccount.public_repos} public repositories</p>
         <p> {gitHubUserAccount.followers} followers</p>
         <p> {gitHubUserAccount.following} following</p>
       </div>
 
       {/* Back navigation */}
-      <Link to="/">← Back to search</Link>
+      <Link to="/">
+        <Button variant="secondary" size="base">
+          <MoveLeft className="mr-2 size-4" />
+          Back to search
+        </Button>
+      </Link>
     </div>
   )
 }
