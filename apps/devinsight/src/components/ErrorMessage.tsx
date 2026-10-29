@@ -1,3 +1,5 @@
+import { Button } from '@vsaithal/core-ui'
+
 export const ErrorMessage = ({
   message,
   onRetry,
@@ -8,7 +10,11 @@ export const ErrorMessage = ({
   return (
     <div className="error-message">
       <p>{message}</p>
-      {onRetry && <button onClick={onRetry}>Retry</button>}
+      {onRetry && (
+        <Button variant="outline" size="sm" onClick={onRetry}>
+          Retry
+        </Button>
+      )}
     </div>
   )
 }
