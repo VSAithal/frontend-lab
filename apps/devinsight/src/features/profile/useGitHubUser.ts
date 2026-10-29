@@ -3,7 +3,7 @@ import { fetchGitHubUser } from '../../api/github'
 
 export const useGitHubUser = (userName: string | null) => {
   const {
-    data: gitHubUserAccount,
+    data: gitHubUserData,
     isLoading: isGitHubUserLoading,
     error: gitHubUserFetchError,
     isFetching: isGitHubUserFetching,
@@ -16,7 +16,7 @@ export const useGitHubUser = (userName: string | null) => {
   })
 
   return {
-    gitHubUserAccount,
+    gitHubUserData,
     isGitHubUserLoading,
     gitHubUserFetchError,
     isGitHubUserError,
