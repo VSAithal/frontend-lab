@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { createColumnHelper } from '@tanstack/react-table'
+import { createColumnHelper, type SortingState } from '@tanstack/react-table'
 import { Table } from '@components/Table'
+import { useState } from 'react'
 
 type Repo = {
   name: string
@@ -21,7 +22,6 @@ const columnHelper = createColumnHelper<Repo>()
 const columns = [
   columnHelper.accessor('name', {
     header: 'Repository Name',
-    cell: (value) => value.getValue(),
   }),
   columnHelper.accessor('language', {
     header: 'Language',
@@ -29,7 +29,6 @@ const columns = [
   }),
   columnHelper.accessor('stars', {
     header: 'Stars',
-    cell: (value) => <span className="ds-text-right">{value.getValue()}</span>,
   }),
 ]
 const meta: Meta<typeof Table<Repo>> = {
@@ -58,4 +57,32 @@ export const WithGetRowId: Story = {
   args: {
     getRowId: (repo) => repo.name,
   },
+}
+
+export const InitialSorting: Story = {
+  args: {
+    initialSorting: [{ id: 'stars', desc: true }],
+  },
+}
+
+const ControlledExample = () => {
+  const [sorting, setSorting] = useState<SortingState>([])
+  return (
+    <div className="ds-grid ds-gap-3">
+      <Table
+        data={repos}
+        columns={columns}
+        caption="Repositories"
+        sorting={sorting}
+        onSortingChange={setSorting}
+      />
+      <pre className="ds-text-xs ds-text-muted-foreground">
+        {JSON.stringify(sorting)}
+      </pre>
+    </div>
+  )
+}
+
+export const ControlledSorting: Story = {
+  render: () => <ControlledExample />,
 }
