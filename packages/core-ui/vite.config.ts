@@ -2,12 +2,20 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import { readFileSync } from 'fs'
 
 const aliases = {
   '@': `${path.resolve(__dirname, './src/')}`,
   '@components': `${path.resolve(__dirname, './src/components/')}`,
   '@utils': `${path.resolve(__dirname, './src/utils/')}`,
 }
+const pkg = JSON.parse(
+  readFileSync(path.resolve(__dirname, './package.json'), 'utf-8'),
+)
+const externalPackages = [
+  ...Object.keys(pkg.dependencies ?? {}),
+  ...Object.keys(pkg.peerDependencies ?? {}),
+]
 
 export default defineConfig({
   plugins: [react()],
@@ -29,7 +37,10 @@ export default defineConfig({
       fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: (id: string) =>
+        externalPackages.some(
+          (name) => id === name || id.startsWith(`${name}/`),
+        ),
       output: {
         assetFileNames: '[name].[ext]',
       },
